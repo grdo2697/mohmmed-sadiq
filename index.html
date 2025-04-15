@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>غيابات الموظفين - العصر الذكي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0ea5e9;
+      --background: #f8fafc;
+      --text: #0f172a;
+      --border: #cbd5e1;
+      --hover: #e0f2fe;
+    }
+    .dark-mode {
+      --background: #0f172a;
+      --text: #f8fafc;
+      --border: #334155;
+      --hover: #1e293b;
+    }
+    * {
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+    }
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      transition: all 0.3s;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), #38bdf8);
+      padding: 1.5rem;
+      text-align: center;
+      color: white;
+      border-radius: 0 0 20px 20px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    th, td {
+      padding: 1rem;
+      text-align: right;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: rgba(14, 165, 233, 0.1);
+      color: var(--primary);
+    }
+    tr:hover {
+      background: var(--hover);
+    }
+    .toggle-dark {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      width: 40px;
+      height: 40px;
+      background: var(--background);
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-dark" onclick="toggleDarkMode()">🌙</button>
+  <header>
+    <h1>قائمة غيابات الموظفين</h1>
+  </header>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>اسم الموظف</th>
+          <th>رقم الموظف</th>
+          <th>السبب</th>
+          <th>ملاحظات</th>
+          <th>التاريخ</th>
+        </tr>
+      </thead>
+      <tbody id="absence-body"></tbody>
+    </table>
+  </div>
+
+  <script>
+    async function fetchAbsences() {
+      try {
+        const res = await fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec");
+        const data = await res.json();
+        const tbody = document.getElementById("absence-body");
+        tbody.innerHTML = "";
+
+        data.forEach(row => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${row.name}</td>
+            <td>${row.id}</td>
+            <td>${row.reason}</td>
+            <td>${row.notes}</td>
+            <td>${row.date}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } catch (err) {
+        console.error("فشل في جلب البيانات", err);
+      }
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    fetchAbsences();
+  </script>
+</body>
+</html>
