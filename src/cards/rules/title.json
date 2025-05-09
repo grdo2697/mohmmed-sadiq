@@ -1,0 +1,47 @@
+{
+  "id": "regles-du-jeu",
+  "golden": false,
+  "category": "rules",
+  "lang": {
+    "fr": {
+      "title": "RÈGLES DU JEU",
+      "abstract": [],
+      "details": []
+    },
+    "en": {
+      "title": "RULES OF THE GAME",
+      "abstract": [],
+      "details": []
+    },
+    "de": {
+      "title": "Spielregeln",
+      "abstract": [],
+      "details": []
+    },
+    "es": {
+      "title": "REGLAS DEL JUEGO",
+      "abstract": [],
+      "details": []
+    },
+    "ru": {
+      "title": "ПРАВИЛА ИГРЫ",
+      "abstract": [],
+      "details": []
+    },
+    "ja": {
+      "title": "ゲームのルール",
+      "abstract": [],
+      "details": []
+    },
+    "ar": {
+      "title": "قواعد اللعبة",
+      "abstract": [],
+      "details": []
+    },
+    "zh-CN": {
+      "title": "游戏规则",
+      "abstract": [],
+      "details": []
+    }
+  }
+}
