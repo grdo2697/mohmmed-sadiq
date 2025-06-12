@@ -1,7 +1,0 @@
-{
-    "explorer.excludeGitIgnore": false,
-    "git.allowForcePush": false,
-    "git.enabled": true,
-    "git.blame.editorDecoration.enabled": true,
-    "git.diagnosticsCommitHook.Enabled": true
-}
